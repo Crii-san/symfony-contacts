@@ -4,9 +4,11 @@
     Hello {{ name }}!
 {% endblock %}
 
+{% set color = ["red", "green"] %}
+
 {% block body %}
     <h1>Hello {{ name }}!</h1>
     {% for i in 1..10 %}
-        <p>Hello {{ name }}! {{ i }}</p>
+        <p style = color:{{ cycle(color, i) }}>Hello {{ name }}! ({{ i }})</p>
     {% endfor %}
 {% endblock %}
