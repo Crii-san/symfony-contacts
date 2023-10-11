@@ -17,8 +17,8 @@ class HelloController extends AbstractController
     }
 
     #[Route('/hello/{name}')]
-    public function world(): Response
+    public function world(string $name): Response
     {
-        return new Response('Hello world!');
+        return new Response("Hello {$name} !");
     }
 }
