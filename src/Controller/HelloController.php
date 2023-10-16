@@ -23,7 +23,7 @@ class HelloController extends AbstractController
     }
 
     #[Route('/hello/{name}/{times}', name: 'app_manyTimes', requirements: ['times' =>'\d+'])]
-    public function manyTimes(string $name, int $times): Response
+    public function manyTimes(string $name, int $times = 3): Response
     {
         if (!($times !== 0 && $times <= 10))
             {
