@@ -16,7 +16,7 @@ class HelloController extends AbstractController
         ]);
     }
 
-    #[Route('/hello/{name}/{times}')]
+    #[Route('app_hello_manytimes')]
     public function world(string $name): Response
     {
         return $this->render('hello/world.html.twig', ['name' => $name]);
