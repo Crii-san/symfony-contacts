@@ -2,7 +2,8 @@
 
 {% block body %}
 <ul>
-    <li><a href="{{ path('app_hello_manytimes', {name: 'Joe', times: 5})}}">Lien 1</a></li>
+    <li><a href="{{ path('app_hello_manytimes', {name: 'Joe', times: 5})}}">Hello Joe 5</a></li>
+    <li><a href="{{ url('app_hello_manytimes', {name: 'Bob', times: 8})}}">Hello Bob 8</a></li>
 </ul>
 {% endblock %}
 
