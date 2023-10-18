@@ -7,7 +7,7 @@
 {% set color = ["red", "green"] %}
 
 {% block body %}
-    <h1>Hello many times {{ times }}!</h1>
+    <h1>Hello many times {{ name }}!</h1>
     {% for i in 0..times-1 %}
         <p style = color:{{ cycle(color, i) }}>Hello {{ name |capitalize}}! ({{ i | format_number({min_integer_digit: 2}) }})</p>
     {% endfor %}
