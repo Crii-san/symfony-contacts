@@ -90,8 +90,8 @@
             "php vendor/bin/codecept run"
         ],
         "test" : [
-            "test:cs",
-            "test:codeception"
+            "@test:cs",
+            "@test:codeception"
         ]
     },
     "scripts-descriptions": {
