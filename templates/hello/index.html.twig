@@ -1,7 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
+<ul>
+    <li><a href="{{ path('app_hello_manytimes', {name: 'Joe', times: 5})}}">Lien 1</a></li>
+</ul>
 {% endblock %}
 
 {% block title %}
