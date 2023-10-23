@@ -16,4 +16,7 @@ class ContactController extends AbstractController
 
         return $this->render('contact/index.html.twig', ['contacts' => $contacts]);
     }
+
+    public function show(int $contactId) : Response
+    {}
 }
