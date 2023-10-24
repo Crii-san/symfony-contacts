@@ -18,7 +18,7 @@ class ContactController extends AbstractController
     }
 
     #[Route('/contact/{contactId}')]
-    public function show(int $contactId) : Response
+    public function show(ContactRepository $contactRepository, int $contactId) : Response
     {
         return $this->render('contact/show.html.twig');
     }
