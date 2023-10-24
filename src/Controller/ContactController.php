@@ -24,6 +24,9 @@ class ContactController extends AbstractController
         if (!$contactId){
             throw new NotFoundHttpException("Le contact n'existe pas");
         }
-        return $this->render('contact/show.html.twig', ['contactId' => $contactId]);
+
+        $contact = $contactRepository->find($contactId);
+
+        return $this->render('contact/show.html.twig', ['contact' => $contact]);
     }
 }
