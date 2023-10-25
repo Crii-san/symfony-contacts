@@ -22,10 +22,6 @@ class ContactController extends AbstractController
     #[Route('/contact/{id}', requirements: ['id' => '\d+'])]
     public function show(Contact $contact): Response
     {
-        if (!$contact) {
-            throw new NotFoundHttpException("Le contact renseigné n'existe pas.");
-        }
-
         return $this->render('contact/show.html.twig', ['contact' => $contact]);
     }
 }
