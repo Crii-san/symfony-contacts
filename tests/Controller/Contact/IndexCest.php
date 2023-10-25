@@ -24,7 +24,7 @@ class IndexCest
     public function test2(ControllerTester $I): void
     {
         $I->amOnPage('/contact');
-        $I->click('li:first-child');
+        $I->click('li:first-child a');
         $I->seeCurrentRouteIs('detail_contact');
     }
 }
