@@ -48,7 +48,7 @@ final class ContactFactory extends ModelFactory
     {
         return [
             'email' => self::faker()->text(100),
-            'firstname' => self::faker()->text(30),
+            'firstname' => self::faker()->firstName(),
             'lastname' => self::faker()->lastName(),
         ];
     }
