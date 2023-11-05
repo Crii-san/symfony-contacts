@@ -21,7 +21,7 @@ class IndexCest
         $I->seeNumberOfElements('a', 195);
     }
 
-    public function test2(ControllerTester $I): void
+    public function clickFirstLink(ControllerTester $I): void
     {
         $I->amOnPage('/contact');
         $I->click('li:first-child a');
