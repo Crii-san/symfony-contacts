@@ -29,13 +29,15 @@ use Zenstruck\Foundry\RepositoryProxy;
  */
 final class ContactFactory extends ModelFactory
 {
+    protected \Transliterator $transliterator;
     /**
      * @see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#factories-as-services
      *
      * @todo inject services if required
      */
-    public function __construct()
+    public function __construct($transliterator)
     {
+        $this->transliterator = $transliterator;
         parent::__construct();
     }
 
@@ -48,12 +50,10 @@ final class ContactFactory extends ModelFactory
     {
         $lastname = self::faker()->lastName();
         $firstname = self::faker()->firstName();
-        $lastname = preg_replace('/[^a-zA-Z]/', '-', $lastname);
-        $firstname = preg_replace('/[^a-zA-Z]/', '-', $firstname);
-        $lastnameLower = mb_strtolower($lastname);
-        $firstnameLower = mb_strtolower($firstname);
+        $lastname = $this->normalizeName($lastname);
+        $firstname = $this->normalizeName($firstname);
         $domain = self::faker()->domainName();
-        $email = $firstnameLower.'.'.$lastnameLower.'@'.$domain;
+        $email = $firstname.'.'.$lastname.'@'.$domain;
 
         return [
             'email' => $email,
@@ -75,5 +75,12 @@ final class ContactFactory extends ModelFactory
     protected static function getClass(): string
     {
         return Contact::class;
+    }
+
+    protected function normalizeName(string $name): string
+    {
+        $name = $this->transliterator->transliterate($name);
+        $name = preg_replace('/[^a-zA-Z]/', '-', $name);
+        return $name;
     }
 }
