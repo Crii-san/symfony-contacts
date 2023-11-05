@@ -46,10 +46,17 @@ final class ContactFactory extends ModelFactory
      */
     protected function getDefaults(): array
     {
+        $lastname = self::faker()->lastName();
+        $firstname = self::faker()->firstName();
+        $lastnameLower = mb_strtolower($lastname);
+        $firstnameLower = mb_strtolower($firstname);
+        $domain = self::faker()->domainName();
+        $email = $firstnameLower.'.'.$lastnameLower.'@'.$domain;
+
         return [
-            'email' => self::faker()->text(100),
-            'firstname' => self::faker()->firstName(),
-            'lastname' => self::faker()->lastName(),
+            'email' => $email,
+            'firstname' => $firstname,
+            'lastname' => $lastname,
         ];
     }
 
