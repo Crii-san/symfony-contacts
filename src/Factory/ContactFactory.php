@@ -48,6 +48,8 @@ final class ContactFactory extends ModelFactory
     {
         $lastname = self::faker()->lastName();
         $firstname = self::faker()->firstName();
+        $lastname = preg_replace('/[^a-zA-Z]/', '-', $lastname);
+        $firstname = preg_replace('/[^a-zA-Z]/', '-', $firstname);
         $lastnameLower = mb_strtolower($lastname);
         $firstnameLower = mb_strtolower($firstname);
         $domain = self::faker()->domainName();
