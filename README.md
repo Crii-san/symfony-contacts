@@ -13,3 +13,10 @@ Le code peut être contrôlé avec `composer test:cs` et reformaté automatiquem
 Les tests Codeception peuvent être lancer avec `composer test:codeception`.
 
 Pour tester la mise en forme et lancer les tests : `composer test`.
+
+#### Base de données
+La commande `composer db` permet de :
+- Détruire la base de données
+- Créer la base de données
+- Appliquer des migrations successives sans questions interactives 
+- Gérèrer des données factices sans questions interactives"
