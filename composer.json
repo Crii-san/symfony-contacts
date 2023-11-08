@@ -108,7 +108,8 @@
         "start": "Lance le serveur web de test",
         "test:cs": "Lance la commande de vérification du code par PHP CS Fixer",
         "fix:cs": "Lance la commande de correction du code par PHP CS Fixer",
-        "db" : "Détruit la base de données, crée la base de données, applique des migrations successives sans questions interactives et gérère des données factices sans questions interactives"
+        "db" : "Détruit la base de données, crée la base de données, applique des migrations successives sans questions interactives et gérère des données factices sans questions interactives",
+        "test:codeception": "Initialise la base de données de test avant de lancer les tests"
     },
     "conflict": {
         "symfony/symfony": "*"
