@@ -2,6 +2,8 @@
 
 namespace App\Tests\Controller\Contact;
 
+use App\Entity\Contact;
+use App\Factory\ContactFactory;
 use App\Tests\Support\ControllerTester;
 
 class IndexCest
@@ -13,6 +15,10 @@ class IndexCest
     // tests
     public function tryToTest(ControllerTester $I): void
     {
+        for ($i = 0; $i < 5; ++$i) {
+            ContactFactory::createOne();
+        }
+
         $I->amOnPage('/contact');
         $I->seeResponseCodeIs(200);
         $I->seeInTitle('Liste des contacts');
