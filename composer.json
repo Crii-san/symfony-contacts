@@ -93,7 +93,10 @@
             "@auto-scripts"
         ],
         "test:codeception": [
-            "codecept clean",
+            "php vendor/bin/codecept clean",
+            "php bin/console doctrine:database:drop --force --quiet --env=test",
+            "php bin/console doctrine:database:create --quiet --env=test",
+            "php bin/console doctrine:schema:create --quiet --env=test",
             "php vendor/bin/codecept run"
         ],
         "test" : [
