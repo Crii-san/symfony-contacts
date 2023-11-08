@@ -10,7 +10,8 @@ Pour lancer le serveur web de test il est possible d'utiliser le script :
 Le code peut être contrôlé avec `composer test:cs` et reformaté automatiquement avec `composer fix:cs`.
 
 #### Lancer les tests 
-Les tests Codeception peuvent être lancer avec `composer test:codeception`.
+Le script `composer test:codeception` permet d'initialiser la base de données avant de lancer les tests.
+
 
 Pour tester la mise en forme et lancer les tests : `composer test`.
 
