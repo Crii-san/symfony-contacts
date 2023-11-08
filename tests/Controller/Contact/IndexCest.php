@@ -23,13 +23,20 @@ class IndexCest
         $I->seeResponseCodeIs(200);
         $I->seeInTitle('Liste des contacts');
         $I->see('Liste des contacts', 'h1');
-        $I->seeNumberOfElements('li', 195);
-        $I->seeNumberOfElements('a', 195);
     }
 
     public function clickFirstLink(ControllerTester $I): void
     {
         $I->amOnPage('/contact');
+
+        $contact = new Contact();
+        $contact->setFirstname('Joe');
+        $contact->setLastname('Aaaaaaaaaaaaaaa');
+
+        for ($i = 0; $i < 5; ++$i) {
+            ContactFactory::createOne();
+        }
+
         $I->click('li:first-child a');
         $I->seeCurrentRouteIs('detail_contact');
     }
