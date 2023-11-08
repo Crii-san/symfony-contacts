@@ -7,7 +7,7 @@ use App\Repository\ContactRepository;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
 use Zenstruck\Foundry\RepositoryProxy;
-
+use Faker;
 /**
  * @extends ModelFactory<Contact>
  *
@@ -49,8 +49,9 @@ final class ContactFactory extends ModelFactory
      */
     protected function getDefaults(): array
     {
-        $lastname = self::faker()->lastName();
-        $firstname = self::faker()->firstName();
+        $faker = Faker\Factory::create('fr_FR');
+        $lastname = $faker->lastName();
+        $firstname = $faker->firstName();
         $lastname = $this->normalizeName($lastname);
         $firstname = $this->normalizeName($firstname);
         $domain = self::faker()->domainName();
@@ -81,6 +82,7 @@ final class ContactFactory extends ModelFactory
     protected function normalizeName(string $name): string
     {
         preg_replace('/[^a-zA-Z]/', '-', $name);
+
         return $this->transliterator->transliterate($name);
     }
 }
