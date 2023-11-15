@@ -8,7 +8,7 @@
     {% for user in contacts %}
         <li>
             <a href="{{ path('detail_contact', {id: user.id}) }}">
-                {{ user.lastname }} {{ user.firstname }}</a>
+                <span class="lastname"> {{ user.lastname }}</span> <span class="firstname">{{ user.firstname }}</span></a>
         </li>
     {% endfor %}
     </ul>
