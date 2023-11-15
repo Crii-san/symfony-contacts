@@ -21,6 +21,11 @@ class ContactRepository extends ServiceEntityRepository
         parent::__construct($registry, Contact::class);
     }
 
+    public function search()
+    {
+
+    }
+
     //    /**
     //     * @return Contact[] Returns an array of Contact objects
     //     */
