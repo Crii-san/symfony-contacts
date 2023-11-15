@@ -59,4 +59,19 @@ class IndexCest
 
         $I->assertEquals($expected, $listContact, "L'ordre est incorrect");
     }
+
+    public function search(ControllerTester $I): void
+    {
+        for ($i = 0; $i < 2; ++$i) {
+            ContactFactory::createOne();
+        }
+        ContactFactory::createOne(['firstname' => 'Abcdefg', 'lastname' => 'Dupont']);
+        ContactFactory::createOne(['firstname' => 'Jean', 'lastname' => 'Abcdefg']);
+
+        $chercheCaractere = 'Abcdefg';
+
+        $I->amOnPage('/contact?search='.$chercheCaractere);
+        $I->see('Dupont Abcdefg');
+        $I->see('Abcdefg Jean');
+    }
 }
