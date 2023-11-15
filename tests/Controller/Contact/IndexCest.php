@@ -31,7 +31,7 @@ class IndexCest
             ContactFactory::createOne();
         }
         $I->amOnPage('/contact');
-        $I->click('li:first-child a');
+        $I->click('ul.contacts > li:first-child a');
         $I->seeCurrentRouteIs('detail_contact');
     }
 
@@ -46,7 +46,7 @@ class IndexCest
 
         $I->amOnPage('/contact');
 
-        $listContact = $I->grabMultiple('//ul/li/a');
+        $listContact = $I->grabMultiple('//ul[@class="contacts"]/li/a');
 
         $listContact = array_map('trim', $listContact);
 
