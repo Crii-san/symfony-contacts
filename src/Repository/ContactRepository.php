@@ -28,15 +28,20 @@ class ContactRepository extends ServiceEntityRepository
     {
         $qb = $this->createQueryBuilder('p');
         $qb->select('p')
-            ->from('souk0003_contact', 'p')
-            ->where('p.firstname = :text OR p.firstname = :text')
-            ->setParameter('text', $text)
-            ->orderBy('p.lastname, p.firstname', 'ASC');
+            ->where($qb->expr()->orX(
+                $qb->expr()->like('p.firstname', ':text'),
+                $qb->expr()->like('p.lastname', ':text')
+            ))
+            ->setParameter('text', '%' . $text . '%')
+            ->orderBy('p.lastname', 'ASC')
+            ->addOrderBy('p.firstname', 'ASC');
 
         $query = $qb->getQuery();
 
         return $query->execute();
     }
+
+
 
     //    /**
     //     * @return Contact[] Returns an array of Contact objects
