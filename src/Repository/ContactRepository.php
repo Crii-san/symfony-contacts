@@ -32,7 +32,7 @@ class ContactRepository extends ServiceEntityRepository
                 $qb->expr()->like('p.firstname', ':text'),
                 $qb->expr()->like('p.lastname', ':text')
             ))
-            ->setParameter('text', '%' . $text . '%')
+            ->setParameter('text', '%'.$text.'%')
             ->orderBy('p.lastname', 'ASC')
             ->addOrderBy('p.firstname', 'ASC');
 
@@ -40,8 +40,6 @@ class ContactRepository extends ServiceEntityRepository
 
         return $query->execute();
     }
-
-
 
     //    /**
     //     * @return Contact[] Returns an array of Contact objects
