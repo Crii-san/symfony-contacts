@@ -7,6 +7,7 @@ use App\Repository\CategoryRepository;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
 use Zenstruck\Foundry\RepositoryProxy;
+use Faker;
 
 /**
  * @extends ModelFactory<Category>
@@ -46,8 +47,10 @@ final class CategoryFactory extends ModelFactory
      */
     protected function getDefaults(): array
     {
+        $faker = Faker\Factory::create();
+        $name = $faker->word();
         return [
-            'name' => self::faker()->text(30),
+            'name' => mb_convert_case($name, MB_CASE_TITLE),
         ];
     }
 
