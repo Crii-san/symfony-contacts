@@ -4,10 +4,11 @@ namespace App\Factory;
 
 use App\Entity\Contact;
 use App\Repository\ContactRepository;
+use Faker;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
 use Zenstruck\Foundry\RepositoryProxy;
-use Faker;
+
 /**
  * @extends ModelFactory<Contact>
  *
@@ -61,6 +62,7 @@ final class ContactFactory extends ModelFactory
             'email' => $email,
             'firstname' => $firstname,
             'lastname' => $lastname,
+            'phone' => $faker->e164PhoneNumber(),
         ];
     }
 
