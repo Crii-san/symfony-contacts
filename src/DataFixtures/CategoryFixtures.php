@@ -11,7 +11,7 @@ class CategoryFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $repertoire = __DIR__;
-        $contenuFichier = file_get_contents("{$repertoire}/Category.json");
+        $contenuFichier = file_get_contents("{$repertoire}\data\Category.json");
         $contenuFichierDecode = json_decode($contenuFichier);
 
         foreach ($contenuFichierDecode as $element) {
