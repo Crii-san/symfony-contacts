@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use App\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,6 +14,13 @@ class CategoryController extends AbstractController
     public function index(CategoryRepository $contactRepository): Response
     {
         $categories = $contactRepository->findAll();
+
         return $this->render('category/index.html.twig', ['categories' => $categories]);
+    }
+
+    #[Route('/category/{id}', name: 'contact_categorie', requirements: ['id' => '\d+'])]
+    public function show(Category $category): Response
+    {
+        return $this->render('category/show.html.twig', ['category' => $category, 'contacts' => $category->getContacts()]);
     }
 }
