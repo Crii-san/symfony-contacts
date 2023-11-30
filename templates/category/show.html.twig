@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contacts par catégories{% endblock %}
+
+{% block body %}
+    <h1>Liste des contacts pour la catégorie {{ category.name }}</h1>
+    {% include 'contact/_contacts.html.twig' with {'contacts': category.contacts} %}
+{% endblock %}
+
+
+
