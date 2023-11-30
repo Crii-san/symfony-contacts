@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CategoryController!{% endblock %}
+{% block title %}Liste des catégories{% endblock %}
 
 {% block body %}
 <style>
@@ -11,7 +11,7 @@
     <h1>Liste des catégories</h1>
     <ul class="categories">
         {% for categorie in categories %}
-            <li >{{categorie.name}}</li>
+            <li >{{categorie.name}} : <a href="{{ path('contact_categorie', {id : categorie.id}) }}">Voir la liste</a></li>
         {% endfor %}
     </ul>
 {% endblock %}
