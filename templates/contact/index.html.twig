@@ -1,15 +1,7 @@
 {% extends 'base.html.twig' %}
-{{ include('./_contacts.html.twig') }}
+
 {% block title %}Liste des contacts{% endblock %}
 
 {% block body %}
-<h1>Liste des contacts</h1>
-    <ul class="contacts">
-    {% for user in contacts %}
-        <li >
-            <a href="{{ path('detail_contact', {id: user.id}) }}">
-                <span class="lastname"> {{ user.lastname }}</span> <span class="firstname">{{ user.firstname }}</span></a>
-        </li>
-    {% endfor %}
-    </ul>
+    {% include 'contact/_contacts.html.twig' %}
 {% endblock %}
