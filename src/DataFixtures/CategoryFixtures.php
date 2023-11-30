@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Factory\CategoryFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
 class CategoryFixtures extends Fixture
@@ -19,4 +20,5 @@ class CategoryFixtures extends Fixture
             CategoryFactory::createOne(['name' => $name]);
         }
     }
+
 }
