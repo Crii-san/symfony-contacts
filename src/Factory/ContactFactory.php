@@ -61,7 +61,6 @@ final class ContactFactory extends ModelFactory
         $proba = $faker->boolean(90);
 
         if ($proba) {
-            $idCategory = $faker->numberBetween(1, 6);
             $category = CategoryFactory::random();
         } else {
             $category = null;
