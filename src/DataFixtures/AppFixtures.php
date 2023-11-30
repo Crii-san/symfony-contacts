@@ -11,7 +11,7 @@ class AppFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
-        CategoryFactory::createOne();
+        CategoryFactory::createOne(['name' => 'Catégorie aléatoire']);
     }
 
     public function getDependencies(): array
