@@ -2,6 +2,7 @@
 
 namespace App\Tests\Controller\Contact;
 
+use App\Factory\CategoryFactory;
 use App\Factory\ContactFactory;
 use App\Tests\Support\ControllerTester;
 
@@ -15,6 +16,7 @@ class IndexCest
     public function tryToTest(ControllerTester $I): void
     {
         for ($i = 0; $i < 5; ++$i) {
+            CategoryFactory::createOne();
             ContactFactory::createOne();
         }
 
@@ -26,8 +28,10 @@ class IndexCest
 
     public function clickFirstLink(ControllerTester $I): void
     {
-        $contact = ContactFactory::createOne(['firstname' => 'Joe', 'lastname' => 'Aaaaaaaaaaaaaaa']);
+        CategoryFactory::createOne();
+        ContactFactory::createOne(['firstname' => 'Joe', 'lastname' => 'Aaaaaaaaaaaaaaa']);
         for ($i = 0; $i < 5; ++$i) {
+            CategoryFactory::createOne();
             ContactFactory::createOne();
         }
         $I->amOnPage('/contact');
@@ -37,6 +41,7 @@ class IndexCest
 
     public function controlSortContact(ControllerTester $I): void
     {
+        CategoryFactory::createOne();
         ContactFactory::createSequence([
             ['firstname' => 'Jean', 'lastname' => 'O'],
             ['firstname' => 'Jean', 'lastname' => 'C'],
@@ -63,9 +68,12 @@ class IndexCest
     public function search(ControllerTester $I): void
     {
         for ($i = 0; $i < 2; ++$i) {
+            CategoryFactory::createOne();
             ContactFactory::createOne();
         }
+        CategoryFactory::createOne();
         ContactFactory::createOne(['firstname' => 'Abcdefg', 'lastname' => 'Dupont']);
+        CategoryFactory::createOne();
         ContactFactory::createOne(['firstname' => 'Jean', 'lastname' => 'Abcdefg']);
 
         $chercheCaractere = 'Abcdefg';
