@@ -13,5 +13,11 @@
 
         <dt>Email</dt>
         <dd>{{ contact.email }}</dd>
+
+        <dt>Téléphone</dt>
+        <dd>{{ contact.phone }}</dd>
+
+        <dt>Catégorie</dt>
+        <dd>{{ contact.category.name ?? 'Pas de catégorie' }}</dd>
     </dl>
 {% endblock %}
