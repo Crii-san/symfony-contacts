@@ -13,7 +13,13 @@ class CategoryController extends AbstractController
     #[Route('/category', name: 'app_category')]
     public function index(CategoryRepository $contactRepository): Response
     {
-        $categories = $contactRepository->findAll();
+        $qb = $contactRepository->createQueryBuilder('c');
+        $qb->select('c')
+            ->orderBy('c.name', 'ASC');
+
+        $query = $qb->getQuery();
+
+        $categories = $query->execute();
         return $this->render('category/index.html.twig', ['categories' => $categories]);
     }
 
