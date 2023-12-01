@@ -14,15 +14,18 @@ class CategoryController extends AbstractController
     public function index(CategoryRepository $contactRepository): Response
     {
         $qb = $contactRepository->createQueryBuilder('cate');
-        $qb->select('cate', 'contCate')
+        $qb->select('cate as category')
+            ->addSelect('contCate')
             ->leftJoin('cate.contacts', 'contCate')
             ->orderBy('cate.name', 'ASC')
-            ->groupBy('cate');
+            ->groupBy('cate')
+            ->addSelect('COUNT(contCate) as count');
 
         $query = $qb->getQuery();
 
-        $categories = $query->execute();
-        return $this->render('category/index.html.twig', ['categories' => $categories]);
+        $listCateCount = $query->execute();
+
+        return $this->render('category/index.html.twig', ['listCateCount' => $listCateCount]);
     }
 
     #[Route('/category/{id}', name: 'contact_categorie', requirements: ['id' => '\d+'])]
