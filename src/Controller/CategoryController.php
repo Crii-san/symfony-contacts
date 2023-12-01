@@ -13,9 +13,10 @@ class CategoryController extends AbstractController
     #[Route('/category', name: 'app_category')]
     public function index(CategoryRepository $contactRepository): Response
     {
-        $qb = $contactRepository->createQueryBuilder('c');
-        $qb->select('c')
-            ->orderBy('c.name', 'ASC');
+        $qb = $contactRepository->createQueryBuilder('cate');
+        $qb->select('cate', 'contCate')
+            ->leftJoin('cate.contacts', 'contCate')
+            ->orderBy('cate.name', 'ASC');
 
         $query = $qb->getQuery();
 
