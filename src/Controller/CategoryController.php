@@ -16,7 +16,8 @@ class CategoryController extends AbstractController
         $qb = $contactRepository->createQueryBuilder('cate');
         $qb->select('cate', 'contCate')
             ->leftJoin('cate.contacts', 'contCate')
-            ->orderBy('cate.name', 'ASC');
+            ->orderBy('cate.name', 'ASC')
+            ->groupBy('cate');
 
         $query = $qb->getQuery();
 
