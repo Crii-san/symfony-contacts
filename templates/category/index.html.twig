@@ -10,8 +10,14 @@
 
     <h1>Liste des catégories</h1>
     <ul class="categories">
-        {% for categorie in categories %}
-            <li >{{categorie.name}} : <a href="{{ path('contact_categorie', {id : categorie.id}) }}">Voir la liste</a></li>
+        {% for cateANDcount in listCateCount %}
+            <li>
+                <span class="badge bg-secondary">{{cateANDcount.count}}</span>
+                {{cateANDcount.category.name}} :
+                <a href="{{ path('contact_categorie', {id : cateANDcount.category.id}) }}">
+                    Voir la liste
+                </a>
+            </li>
         {% endfor %}
     </ul>
 {% endblock %}
