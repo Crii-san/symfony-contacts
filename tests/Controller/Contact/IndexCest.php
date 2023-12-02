@@ -35,7 +35,7 @@ class IndexCest
             ContactFactory::createOne();
         }
         $I->amOnPage('/contact');
-        $I->click('ul.contacts > li:first-child a');
+        $I->click('ul.contacts > li:first-child a:nth-child(2)');
         $I->seeCurrentRouteIs('detail_contact');
     }
 
@@ -53,7 +53,9 @@ class IndexCest
 
         $listContact = $I->grabMultiple('//ul[@class="contacts"]/li/a');
 
-        $listContact = array_map('trim', $listContact);
+        $listContact = array_map(static function ($contact) {
+            return preg_replace('/\s+/', ' ', trim($contact));
+        }, $listContact);
 
         $expected = [
             'A Jean',
@@ -64,6 +66,7 @@ class IndexCest
 
         $I->assertEquals($expected, $listContact, "L'ordre est incorrect");
     }
+
 
     public function search(ControllerTester $I): void
     {
