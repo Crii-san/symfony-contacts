@@ -2,8 +2,11 @@
     <ul class="contacts">
         {% for user in contacts %}
             <li>
+                <span class="badge bg-secondary">{{ user.category.name ?? 'Pas de catégorie'}}</span>
                 <a href="{{ path('detail_contact', {id: user.id}) }}">
-                    <span class="lastname"> {{ user.lastname }}</span> <span class="firstname">{{ user.firstname }}</span></a>
+                    <span class="lastname"> {{ user.lastname }}</span>
+                    <span class="firstname">{{ user.firstname }}</span>
+                </a>
             </li>
         {% endfor %}
     </ul>
