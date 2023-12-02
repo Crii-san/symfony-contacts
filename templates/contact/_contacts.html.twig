@@ -2,7 +2,14 @@
     <ul class="contacts">
         {% for user in contacts %}
             <li>
-                <span class="badge bg-secondary">{{ user.category.name ?? 'Pas de catégorie'}}</span>
+                <span class="badge bg-secondary">
+                {% if user.category is not null %}
+                    <a class="nav-link" href="{{ path('contact_categorie', {id: user.category.id }) }}">{{ user.category.name }}</a>
+                {% else %}
+                    Pas de catégorie
+                {% endif %}
+                </span>
+
                 <a href="{{ path('detail_contact', {id: user.id}) }}">
                     <span class="lastname"> {{ user.lastname }}</span>
                     <span class="firstname">{{ user.firstname }}</span>
