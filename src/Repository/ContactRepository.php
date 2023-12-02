@@ -26,15 +26,17 @@ class ContactRepository extends ServiceEntityRepository
      */
     public function search(string $text = ''): array
     {
-        $qb = $this->createQueryBuilder('p');
-        $qb->select('p')
+        $qb = $this->createQueryBuilder('cont');
+        $qb->select('cont')
+            ->addSelect('category')
+            ->leftJoin('cont.category', 'category')
             ->where($qb->expr()->orX(
-                $qb->expr()->like('p.firstname', ':text'),
-                $qb->expr()->like('p.lastname', ':text')
+                $qb->expr()->like('cont.firstname', ':text'),
+                $qb->expr()->like('cont.lastname', ':text')
             ))
             ->setParameter('text', '%'.$text.'%')
-            ->orderBy('p.lastname', 'ASC')
-            ->addOrderBy('p.firstname', 'ASC');
+            ->orderBy('cont.lastname', 'ASC')
+            ->addOrderBy('cont.firstname', 'ASC');
 
         $query = $qb->getQuery();
 
@@ -52,7 +54,7 @@ class ContactRepository extends ServiceEntityRepository
 
         $query = $qb->getQuery();
 
-        return $query->getOneOrNullResult();;
+        return $query->getOneOrNullResult();
     }
 
     //    /**
