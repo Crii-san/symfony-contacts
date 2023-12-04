@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% set nom_prenom_contact = contact.lastname~ ' ' ~contact.firstname  %}
+
+{% block title %}Suppression de {{nom_prenom_contact}}{% endblock %}
+
+{% block body %}
+    <h1>Suppression de {{nom_prenom_contact}}</h1>
+{% endblock %}
