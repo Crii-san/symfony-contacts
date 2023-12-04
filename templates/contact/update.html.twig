@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% set nom_prenom_contact = contact.lastname~ ' ' ~contact.firstname  %}
+{% set nom_prenom_contact = contact.lastname~ ', ' ~contact.firstname  %}
 
 {% block title %}Édition de {{nom_prenom_contact}}{% endblock %}
 
