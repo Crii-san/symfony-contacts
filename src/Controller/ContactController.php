@@ -33,9 +33,9 @@ class ContactController extends AbstractController
     #[Route('/contact/{id}/update', name: 'update_contact', requirements: ['id' => '\d+'])]
     public function update(Contact $contact): Response
     {
-        $form = $this->createForm(ContactType::class);
+        $form = $this->createForm(ContactType::class, $contact);
 
-        return $this->render('contact/update.html.twig', ['contact' => $contact, 'form' => $form]);
+        return $this->render('contact/update.html.twig', ['contact' => $contact, 'form' => $form->createView()]);
     }
 
     #[Route('/contact/create', name: 'create_contact')]
