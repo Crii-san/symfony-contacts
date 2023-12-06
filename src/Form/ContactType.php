@@ -8,6 +8,7 @@ use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -19,7 +20,7 @@ class ContactType extends AbstractType
             ->add('firstname')
             ->add('lastname')
             ->add('email', EmailType::class)
-            ->add('phone')
+            ->add('phone', TelType::class)
             ->add('category', EntityType::class, [
                 'class' => Category::class,
                 'choice_label' => 'name',
