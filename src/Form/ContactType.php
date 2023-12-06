@@ -23,6 +23,7 @@ class ContactType extends AbstractType
             ->add('phone', TelType::class)
             ->add('category', EntityType::class, [
                 'required' => false,
+                'placeholder' => 'Catégorie ?',
                 'class' => Category::class,
                 'choice_label' => 'name',
                 'query_builder' => function (EntityRepository $entityRepository) {
