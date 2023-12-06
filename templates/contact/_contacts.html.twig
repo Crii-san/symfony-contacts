@@ -1,20 +1,17 @@
 <ul class="contacts">
     {% for user in contacts %}
         <li>
-            <span class="badge bg-secondary">
-            {% if show_category ?? true %}
-                {% if user.category is not null %}
-                    <a class="nav-link" href="{{ path('contact_categorie', {id: user.category.id }) }}">{{ user.category.name }}</a>
-                {% else %}
-                    Pas de catégorie
-                {% endif %}
-            {% endif %}
-            </span>
 
             <a href="{{ path('detail_contact', {id: user.id}) }}">
                 <span class="lastname">{{ user.lastname }}</span>
                 <span class="firstname">{{ user.firstname }}</span>
             </a>
+
+            {% if show_category ?? true %}
+                {% if user.category is not null %}
+                    <a class="nav-link badge bg-secondary" href="{{ path('contact_categorie', {id: user.category.id }) }}">{{ user.category.name }}</a>
+                {% endif %}
+            {% endif %}
         </li>
     {% endfor %}
 </ul>
