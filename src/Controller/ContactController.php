@@ -40,6 +40,8 @@ class ContactController extends AbstractController
         $form->handleRequest($requete);
         if ($form->isSubmitted() && $form->isValid()) {
             $contact = $form->getData();
+
+            return $this->redirectToRoute('detail_contact');
         }
 
         return $this->render('contact/update.html.twig', ['contact' => $contact, 'form' => $form->createView()]);
