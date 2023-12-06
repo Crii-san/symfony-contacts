@@ -21,6 +21,10 @@ class Contact
     #[ORM\Column(length: 30)]
     private ?string $firstname = null;
 
+    #[Assert\NotBlank]
+    #[Assert\Length(
+        max : 40
+    )]
     #[ORM\Column(length: 40)]
     private ?string $lastname = null;
 
