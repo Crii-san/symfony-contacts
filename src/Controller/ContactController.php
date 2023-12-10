@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Contact;
 use App\Form\ContactType;
 use App\Repository\ContactRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,17 +32,15 @@ class ContactController extends AbstractController
     }
 
     #[Route('/contact/{id}/update', name: 'update_contact', requirements: ['id' => '\d+'])]
-    public function update(Contact $contact, Request $request): Response
+    public function update(Contact $contact, Request $request, EntityManagerInterface $entityManager): Response
     {
-        $requete = $request->query->get('requete');
-
         $form = $this->createForm(ContactType::class, $contact);
 
-        $form->handleRequest($requete);
+        $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $contact = $form->getData();
+            $entityManager->flush();
 
-            return $this->redirectToRoute('detail_contact');
+            return $this->redirectToRoute('detail_contact', ['id' => $contact->getId()]);
         }
 
         return $this->render('contact/update.html.twig', ['contact' => $contact, 'form' => $form->createView()]);
