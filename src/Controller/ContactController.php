@@ -50,7 +50,8 @@ class ContactController extends AbstractController
     #[Route('/contact/create', name: 'create_contact')]
     public function create(): Response
     {
-        ContactFactory::createOne();
+        $contact = ContactFactory::createOne();
+        $form = $this->createForm($contact);
         return $this->render('contact/create.html.twig');
     }
 
