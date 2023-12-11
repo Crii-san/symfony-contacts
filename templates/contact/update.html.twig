@@ -1,5 +1,4 @@
 {% extends 'base.html.twig' %}
-{% form_theme form 'bootstrap_5_layout.html.twig' %}
 {% set nom_prenom_contact = contact.lastname~ ', ' ~contact.firstname  %}
 
 {% block title %}Édition de {{nom_prenom_contact}}{% endblock %}
