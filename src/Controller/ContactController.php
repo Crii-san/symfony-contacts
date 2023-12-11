@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Contact;
+use App\Factory\ContactFactory;
 use App\Form\ContactType;
 use App\Repository\ContactRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -49,6 +50,7 @@ class ContactController extends AbstractController
     #[Route('/contact/create', name: 'create_contact')]
     public function create(): Response
     {
+        ContactFactory::createOne();
         return $this->render('contact/create.html.twig');
     }
 
