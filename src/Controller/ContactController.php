@@ -50,9 +50,8 @@ class ContactController extends AbstractController
     #[Route('/contact/create', name: 'create_contact')]
     public function create(): Response
     {
-        $contact = ContactFactory::createOne();
-        $form = $this->createForm($contact);
-        return $this->render('contact/create.html.twig');
+        $contact = new Contact();
+
     }
 
     #[Route('/contact/{id}/delete', name: 'delete_contact', requirements: ['id' => '\d+'])]
