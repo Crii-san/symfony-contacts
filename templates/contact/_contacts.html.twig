@@ -7,7 +7,7 @@
             <a href="{{ path('delete_contact', {id: user.id}) }}">
                 <span class="material-symbols-outlined text-danger">delete</span>
             </a>
-            <a href="{{ path('detail_contact', {id: user.id}) }}">
+            <a class="contact" href="{{ path('detail_contact', {id: user.id}) }}">
                 <span class="lastname">{{ user.lastname }}</span>
                 <span class="firstname">{{ user.firstname }}</span>
             </a>
