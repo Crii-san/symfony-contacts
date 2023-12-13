@@ -11,7 +11,7 @@
     {{ form_row(form.email, {'label': 'Email'}) }}
     {{ form_row(form.phone, {'label': 'Téléphone'}) }}
     {{ form_row(form.category, {'label': 'Catégorie', 'placeholder' : 'Catégorie ?'}) }}
-    <button type="submit" class="w-100 p-3 btn btn-primary btn-lg btn-block"> Ajouter </button>
+    <button type="submit" class="w-100 p-3 btn btn-primary btn-lg btn-block"> {{ submit_label }} </button>
 
     {{ form_end(form) }}
 {% endblock %}
