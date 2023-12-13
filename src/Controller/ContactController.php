@@ -66,11 +66,11 @@ class ContactController extends AbstractController
     #[Route('/contact/{id}/delete', name: 'delete_contact', requirements: ['id' => '\d+'])]
     public function delete(Contact $contact): Response
     {
-        $form = $this->createFormBuilder(ContactType::class)
-            ->add('delete', SubmitType::class, ['label' => 'Supprimer'])
-            ->add('cancel', SubmitType::class, ['label' => 'Annuler'])
+        $form = $this->createFormBuilder()
+            ->add('delete', SubmitType::class, ['label' => 'delete'])
+            ->add('cancel', SubmitType::class, ['label' => 'cancel'])
             ->getForm();
 
-        return $this->render('contact/delete.html.twig', ['contact' => $contact]);
+        return $this->render('contact/delete.html.twig', ['contact' => $contact, 'form' => $form->createView()]);
     }
 }
