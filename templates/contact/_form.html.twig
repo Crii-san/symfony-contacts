@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Création d'un nouveau contact{% endblock %}
+{% block title %}{{ action_label }} d'un nouveau contact{% endblock %}
 
 {% block body %}
-    <h1>Création d'un nouveau contact</h1>
+    <h1>{{ action_label }} d'un nouveau contact</h1>
     {{ form_start(form) }}
 
     {{ form_row(form.firstname, {'label': 'Prénom'}) }}
