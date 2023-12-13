@@ -1,17 +1,2 @@
-{% extends 'base.html.twig' %}
+{{ include('contact/_form.html.twig') }}
 
-{% block title %}Création d'un nouveau contact{% endblock %}
-
-{% block body %}
-    <h1>Création d'un nouveau contact</h1>
-    {{ form_start(form) }}
-
-    {{ form_row(form.firstname, {'label': 'Prénom'}) }}
-    {{ form_row(form.lastname, {'label': 'Nom'}) }}
-    {{ form_row(form.email, {'label': 'Email'}) }}
-    {{ form_row(form.phone, {'label': 'Téléphone'}) }}
-    {{ form_row(form.category, {'label': 'Catégorie', 'placeholder' : 'Catégorie ?'}) }}
-    <button type="submit" class="w-100 p-3 btn btn-primary btn-lg btn-block"> Ajouter </button>
-
-    {{ form_end(form) }}
-{% endblock %}
