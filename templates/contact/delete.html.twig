@@ -6,4 +6,10 @@
 
 {% block body %}
     <h1>Suppression de {{nom_prenom_contact}}</h1>
+    {{ form_start(form) }}
+    {{ form_row(form.delete, {'label': 'Supprimer'}) }}
+    {{ form_row(form.cancel, {'label': 'Annuler'}) }}
+    {{ form_end(form) }}
+
 {% endblock %}
+
