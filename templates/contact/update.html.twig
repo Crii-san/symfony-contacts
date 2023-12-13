@@ -1,12 +1,1 @@
-{% extends 'base.html.twig' %}
-{% set nom_prenom_contact = contact.lastname~ ', ' ~contact.firstname  %}
-
-{% block title %}Édition de {{nom_prenom_contact}}{% endblock %}
-
-{% block body %}
-    <h1>Édition de {{nom_prenom_contact}}</h1>
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button type="submit" class="w-100 p-3 btn btn-primary btn-lg btn-block"> Modifier </button>
-    {{ form_end(form) }}
-{% endblock %}
+{{ include('contact/_form.html.twig', {submit_label: 'Modifier', form }, with_context = false) }}
