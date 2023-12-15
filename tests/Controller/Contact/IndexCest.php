@@ -51,7 +51,7 @@ class IndexCest
 
         $I->amOnPage('/contact');
 
-        $listContact = $I->grabMultiple('//ul[@class="contacts"]/li/a');
+        $listContact = $I->grabMultiple('//ul[@class="contacts"]/li/a[3]');
 
         $listContact = array_map(static function ($contact) {
             return preg_replace('/\s+/', ' ', trim($contact));
