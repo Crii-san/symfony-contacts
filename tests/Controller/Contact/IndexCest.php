@@ -35,7 +35,7 @@ class IndexCest
             ContactFactory::createOne();
         }
         $I->amOnPage('/contact');
-        $I->click('ul.contacts > li:first-child a:nth-child(2)');
+        $I->click('ul.contacts > li:first-child a:nth-child(3)');
         $I->seeCurrentRouteIs('detail_contact');
     }
 
