@@ -20,4 +20,10 @@ La commande `composer db` permet de :
 - Détruire la base de données
 - Créer la base de données
 - Appliquer des migrations successives sans questions interactives 
-- Gérèrer des données factices sans questions interactives"
+- Générer des données factices sans questions interactives"
+
+#### Démonstration 
+
+Pour tester l'interface d'authentification, il est possible d'utiliser ces identifiants avec le mot de passe "test" :
+- root@example.com
+- user@example.com
