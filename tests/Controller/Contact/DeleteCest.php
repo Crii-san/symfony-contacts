@@ -5,6 +5,7 @@ namespace App\Tests\Controller\Contact;
 use App\Factory\ContactFactory;
 use App\Factory\UserFactory;
 use App\Tests\Support\ControllerTester;
+use Codeception\Util\HttpCode;
 
 class DeleteCest
 {
@@ -29,5 +30,16 @@ class DeleteCest
         ContactFactory::createOne();
         $I->amOnPage('/contact/1/delete');
         $I->seeCurrentRouteIs('app_login');
+    }
+
+    public function accessIsRestrictedToAdminUsers(ControllerTester $I): void
+    {
+        ContactFactory::createOne();
+
+        $user = UserFactory::createOne(['roles' => ['ROLE_USER']]);
+        $I->amLoggedInAs($user->object());
+
+        $I->amOnPage('/contact/1/delete');
+        $I->seeResponseCodeIs(HttpCode::FORBIDDEN);
     }
 }
