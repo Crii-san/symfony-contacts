@@ -23,4 +23,11 @@ class DeleteCest
         $I->seeInTitle('Suppression de Simpson, Homer');
         $I->see('Suppression de Simpson, Homer', 'h1');
     }
+
+    public function accessIsRestrictedToAuthenticatedUsers(ControllerTester $I): void
+    {
+        ContactFactory::createOne();
+        $I->amOnPage('/contact/1/delete');
+        $I->seeCurrentRouteIs('app_login');
+    }
 }
