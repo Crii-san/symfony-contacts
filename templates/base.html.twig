@@ -31,6 +31,13 @@
                         <li class="nav-item">
                             <a class="navbar-brand" href="/contact/create">Ajouter un contact</a>
                         </li>
+
+                        {% if is_granted('ROLE_USER') %}
+                            <a class="btn btn-primary" href="/logout" role="button">{{ app.user.firstname }}</a>
+                        {% else %}
+                            <a class="btn btn-primary" href="/login" role="button">Connection</a>
+                        {% endif %}
+
                     </ul>
                     <form class="d-flex" role="search" action="/contact" method="GET">
                         <input class="form-control me-2" type="search" name="search" placeholder="Recherche" aria-label="Search">
