@@ -63,6 +63,7 @@ final class ContactFactory extends ModelFactory
             'firstname' => $firstname,
             'lastname' => $lastname,
             'phone' => $faker->e164PhoneNumber(),
+            'roles' => [],
         ];
     }
 
