@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class ContactController extends AbstractController
 {
@@ -32,6 +33,7 @@ class ContactController extends AbstractController
         return $this->render('contact/show.html.twig', ['contact' => $contact]);
     }
 
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/contact/{id}/update', name: 'update_contact', requirements: ['id' => '\d+'])]
     public function update(Contact $contact, Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -47,6 +49,7 @@ class ContactController extends AbstractController
         return $this->render('contact/update.html.twig', ['contact' => $contact, 'form' => $form->createView()]);
     }
 
+    #[IsGranted('ROLE_USER')]
     #[Route('/contact/create', name: 'create_contact')]
     public function create(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -63,6 +66,7 @@ class ContactController extends AbstractController
         return $this->render('contact/create.html.twig', ['form' => $form->createView()]);
     }
 
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/contact/{id}/delete', name: 'delete_contact', requirements: ['id' => '\d+'])]
     public function delete(Contact $contact, Request $request, EntityManagerInterface $entityManager): Response
     {
