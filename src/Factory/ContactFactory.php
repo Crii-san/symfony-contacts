@@ -58,21 +58,11 @@ final class ContactFactory extends ModelFactory
         $domain = self::faker()->domainName();
         $email = $firstname.'.'.$lastname.'@'.$domain;
 
-        $proba = $faker->boolean(90);
-
-        $category = CategoryFactory::createOne();
-        if ($proba) {
-            $category = CategoryFactory::random();
-        } else {
-            $category = null;
-        }
-
         return [
             'email' => $email,
             'firstname' => $firstname,
             'lastname' => $lastname,
             'phone' => $faker->e164PhoneNumber(),
-            'category' => $category,
         ];
     }
 
