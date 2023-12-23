@@ -2,7 +2,6 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Category;
 use App\Entity\Contact;
 use Doctrine\ORM\EntityRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
@@ -21,6 +20,7 @@ class ContactCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
+            IdField::new('id')->hideOnForm(),
             'firstname',
             'lastname',
             'email',
@@ -32,7 +32,10 @@ class ContactCrudController extends AbstractCrudController
                         return $entityRepository->createQueryBuilder('c')
                             ->orderBy('c.name', 'ASC');
                     },
-                ]),
+                ])
+                ->formatValue(function ($value) {
+                    return $value?->getName();
+                }),
         ];
     }
     /*
