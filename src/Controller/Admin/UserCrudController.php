@@ -7,7 +7,6 @@ use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -48,6 +47,20 @@ class UserCrudController extends AbstractCrudController
 
     public function updateEntity(EntityManagerInterface $entityManager, $entityInstance): void
     {
+        $this->setUserPassword($entityInstance);
+
+        parent::updateEntity($entityManager, $entityInstance);
+    }
+
+    public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
+    {
+        $this->setUserPassword($entityInstance);
+
+        parent::persistEntity($entityManager, $entityInstance);
+    }
+
+    public function setUserPassword($entityInstance): void
+    {
         $request = $this->getContext()->getRequest();
         $password = $request->get('User')['password'] ?? null;
 
@@ -55,18 +68,5 @@ class UserCrudController extends AbstractCrudController
             $hashedPassword = $this->passwordHasher->hashPassword($entityInstance, $password);
             $entityInstance->setPassword($hashedPassword);
         }
-
-        parent::updateEntity($entityManager, $entityInstance);
     }
-
-    /*
-    public function configureFields(string $pageName): iterable
-    {
-        return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
-        ];
-    }
-    */
 }
